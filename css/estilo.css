@@ -1,3 +1,26 @@
-body{
-    background-color: red;
+:root{
+    --espaco-padrao: 10px;
+}
+
+/* Reset */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+#cartoes {
+  width: 720px;
+  margin: auto;
+  padding: var(--espaco-padrao);
+  list-style: none;
+  background-color: red;
+}
+
+.cartao{
+    width: 150px;
+    height: 150px;
+    margin: var(--espaco-padrao);
+    background-color: yellow;
+    display: inline-block;
 }
