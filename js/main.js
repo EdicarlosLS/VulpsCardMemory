@@ -26,9 +26,24 @@ function criarCartao(_cartao) {
   let cartao = document.createElement("li");
   cartao.textContent = _cartao.valor();
   cartao.classList.add("cartao");
+
+
+  _cartao.seInscrever((cart)=>{
+    if(cart.estado() == Cartao.ESTADO_VISIVEL){
+      cartao.classList.add("visivel");
+    } else {
+      cartao.classList.remove("visivel");
+    }
+  });
+
   cartao.addEventListener("click", () => {
     combinador.adicionar(_cartao);
-    combinador.combinar();
+    setTimeout(() => {
+      combinador.combinar();
+    }, 1000); 
   });
   return cartao;
 }
+
+
+

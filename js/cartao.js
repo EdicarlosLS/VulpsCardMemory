@@ -4,25 +4,39 @@ export default class Cartao {
 
   #valor;
   #estado;
+  #observadores;
 
   constructor(valor) {
     this.#valor = valor;
     this.#estado = Cartao.ESTADO_ESCONDIDO;
+    this.#observadores = [];
   }
 
-  valor(){
+  valor() {
     return this.#valor;
   }
 
-  estado(){
+  estado() {
     return this.#estado;
   }
 
-  esconder(){
+  esconder() {
     this.#estado = Cartao.ESTADO_ESCONDIDO;
+    this.#notificar();
   }
 
-  mostrar(){
+  mostrar() {
     this.#estado = Cartao.ESTADO_VISIVEL;
+    this.#notificar();
+  }
+
+  seInscrever(observador) {
+    this.#observadores.push(observador);
+  }
+
+  #notificar() {
+    this.#observadores.forEach((observador) => {
+      observador(this);
+    });
   }
 }

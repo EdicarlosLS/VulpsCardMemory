@@ -10,7 +10,7 @@ export default class Combinador {
 
     cartao.mostrar();
     this.#cartoes.push(cartao);
-    console.log(this.#cartoes);
+    console.log(cartao.valor());
   }
 
   combinar() {
@@ -32,4 +32,5 @@ export default class Combinador {
   #estaCheio() {
     return this.#cartoes.length > 1;
   }
+
 }
