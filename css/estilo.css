@@ -19,14 +19,46 @@
 
 .cartao {
   width: 150px;
-  height: 150px;
+  height: 200px;
   margin: var(--espaco-padrao);
-  background: yellow;
   display: inline-block;
-  transition: background 2s, transform 1.25s;
+  position: relative;
 }
 
-.visivel {
-  background: blue;
+.frente {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  
+  transition: transform 1s;
+}
+
+.verso {
+  width: 100%;
+  height: 100%;
+  background-color: green;
+  position: absolute;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  
+  transition: transform 1s;
+}
+
+.visivel > .frente{
+  transform: rotateY(0deg);
+}
+
+.visivel > .verso{
   transform: rotateY(180deg);
 }
+
+

@@ -3,7 +3,20 @@ import Combinador from "./combinador";
 
 let combinador = new Combinador();
 
-let valores = ["A", "X", "C", "Y", "E", "Z"];
+let valores = [
+  "beijo",
+  "coracao_partido",
+  "decepcionado",
+  "duvidando",
+  "feliz",
+  "legal",
+  "lingua",
+  "pidao",
+  "piscando",
+  "surpreso",
+  "telefone",
+  "zangado",
+];
 let cartoes = [];
 
 criarCartoesComValores();
@@ -24,12 +37,21 @@ cartoes.forEach((cartao) => {
 
 function criarCartao(_cartao) {
   let cartao = document.createElement("li");
-  cartao.textContent = _cartao.valor();
   cartao.classList.add("cartao");
 
+  let imgFrente = document.createElement("img");
+  imgFrente.setAttribute("src", `./img/${_cartao.valor()}.png`);
+  imgFrente.classList.add("frente");
 
-  _cartao.seInscrever((cart)=>{
-    if(cart.estado() == Cartao.ESTADO_VISIVEL){
+  cartao.appendChild(imgFrente);
+
+  let divVerso = document.createElement("div");
+  divVerso.classList.add("verso");
+
+  cartao.appendChild(divVerso);
+
+  _cartao.seInscrever((cart) => {
+    if (cart.estado() == Cartao.ESTADO_VISIVEL) {
       cartao.classList.add("visivel");
     } else {
       cartao.classList.remove("visivel");
@@ -40,10 +62,7 @@ function criarCartao(_cartao) {
     combinador.adicionar(_cartao);
     setTimeout(() => {
       combinador.combinar();
-    }, 3000); 
+    }, 2000);
   });
   return cartao;
 }
-
-
-
