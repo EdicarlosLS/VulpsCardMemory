@@ -1,5 +1,5 @@
-:root{
-    --espaco-padrao: 12px;
+:root {
+  --espaco-padrao: 12px;
 }
 
 /* Reset */
@@ -17,14 +17,16 @@
   background-color: red;
 }
 
-.cartao{
-    width: 150px;
-    height: 150px;
-    margin: var(--espaco-padrao);
-    background-color: yellow;
-    display: inline-block;
+.cartao {
+  width: 150px;
+  height: 150px;
+  margin: var(--espaco-padrao);
+  background: yellow;
+  display: inline-block;
+  transition: background 2s, transform 1.25s;
 }
 
-.visivel{
-  background-color: blue;
+.visivel {
+  background: blue;
+  transform: rotateY(180deg);
 }

@@ -40,7 +40,7 @@ function criarCartao(_cartao) {
     combinador.adicionar(_cartao);
     setTimeout(() => {
       combinador.combinar();
-    }, 1000); 
+    }, 3000); 
   });
   return cartao;
 }
