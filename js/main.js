@@ -1,20 +1,11 @@
 import Cartao from "./cartao";
 import Combinador from "./combinador";
+import Timer from "./timer";
 
 let combinador = new Combinador();
 
 let valores = [
   "beijo",
-  "coracao_partido",
-  "decepcionado",
-  "duvidando",
-  "feliz",
-  "legal",
-  "lingua",
-  "pidao",
-  "piscando",
-  "surpreso",
-  "telefone",
   "zangado",
 ];
 let cartoes = [];
@@ -62,7 +53,33 @@ function criarCartao(_cartao) {
     combinador.adicionar(_cartao);
     setTimeout(() => {
       combinador.combinar();
+      viraramTodos();
     }, 2000);
   });
   return cartao;
+}
+let timer = document.querySelectorAll(".timer")[0];
+timer.textContent = "Iniciar";
+
+let t = new Timer(({ minutos, segundos }) => {
+  timer.textContent = `${minutos} : ${segundos < 10 ? "0" : ""}${segundos}`;
+});
+
+timer.addEventListener("click", () => {
+  t.iniciar();
+  listaCartoes.classList.add("jogando");
+  listaCartoes.style.height = "1480px";
+});
+
+function viraramTodos() {
+  let temAlgumEscondido = cartoes.some((cartao) => {
+    return cartao.estado() == Cartao.ESTADO_ESCONDIDO;
+  });
+
+  if (!temAlgumEscondido) {
+    t.parar();
+    listaCartoes.classList.remove("jogando");
+    listaCartoes.style.height = "250px";
+    timer.classList.add("finalizou");
+  }
 }
