@@ -21,14 +21,23 @@ let valores = [
 let cartoes = [];
 
 let listaCartoes = document.querySelector("#cartoes");
-//criarCartoesComValores();
 
 function criarCartoesComValores(numeroDeCartoes) {
+  //Criar pares de cartões
   for (let i = 0; i < numeroDeCartoes; i++) {
     const cartao = new Cartao(valores[i]);
     cartoes.push(cartao);
     const cartao2 = new Cartao(valores[i]);
     cartoes.push(cartao2);
+  }
+
+  //Embaralhar
+  for (let j = 0; j < cartoes.length; j++) {
+    
+    let novaPosicao = Math.floor(Math.random() * cartoes.length);
+    let aux = cartoes[j];
+    cartoes[j] = cartoes[novaPosicao];
+    cartoes[novaPosicao] = aux;
   }
 
   cartoes.forEach((cartao) => {

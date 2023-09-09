@@ -13,4 +13,3 @@ Quando o Usuário clica no 2º cartão:
 -   [ ] Se não houver uma correspondência, as 2 cartas voltarão ao seu estado original (escondidas)
 -   [ ] Quando todas as correspondências forem encontradas, o usuário poderá ver uma caixa de diálogo mostrando uma mensagem de parabéns com um contador exibindo o tempo que levou para terminar o jogo
 -   [ ] O usuário pode escolher entre vários níveis de dificuldade (Fácil, Médio, Difícil). Dificuldade aumentada significa aumentar o número de cartões
--   [ ] O usuário pode ver as estatísticas do jogo (nr. de vezes que ele ganhou / ele perdeu, melhor tempo para cada nível)
