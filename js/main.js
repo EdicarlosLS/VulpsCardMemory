@@ -6,25 +6,35 @@ let combinador = new Combinador();
 
 let valores = [
   "beijo",
+  "coracao_partido",
+  "decepcionado",
+  "duvidando",
+  "feliz",
+  "legal",
+  "lingua",
+  "pidao",
+  "piscando",
+  "surpreso",
+  "telefone",
   "zangado",
 ];
 let cartoes = [];
 
-criarCartoesComValores();
+let listaCartoes = document.querySelector("#cartoes");
+//criarCartoesComValores();
 
-function criarCartoesComValores() {
-  valores.forEach((valor) => {
-    const cartao = new Cartao(valor);
+function criarCartoesComValores(numeroDeCartoes) {
+  for (let i = 0; i < numeroDeCartoes; i++) {
+    const cartao = new Cartao(valores[i]);
     cartoes.push(cartao);
-    const cartao2 = new Cartao(valor);
+    const cartao2 = new Cartao(valores[i]);
     cartoes.push(cartao2);
+  }
+
+  cartoes.forEach((cartao) => {
+    listaCartoes.appendChild(criarCartao(cartao));
   });
 }
-
-let listaCartoes = document.querySelector("#cartoes");
-cartoes.forEach((cartao) => {
-  listaCartoes.appendChild(criarCartao(cartao));
-});
 
 function criarCartao(_cartao) {
   let cartao = document.createElement("li");
@@ -59,16 +69,28 @@ function criarCartao(_cartao) {
   return cartao;
 }
 let timer = document.querySelectorAll(".timer")[0];
-timer.textContent = "Iniciar";
+timer.textContent = "0 : 00";
 
 let t = new Timer(({ minutos, segundos }) => {
   timer.textContent = `${minutos} : ${segundos < 10 ? "0" : ""}${segundos}`;
 });
 
-timer.addEventListener("click", () => {
-  t.iniciar();
-  listaCartoes.classList.add("jogando");
-  listaCartoes.style.height = "1480px";
+let opcoes = document.querySelectorAll(".opcao");
+let menu = document.querySelector("#menu");
+opcoes.forEach((opcao, index) => {
+  opcao.addEventListener("click", () => {
+    t.iniciar();
+
+    criarCartoesComValores((index + 1) * 4);
+
+    timer.style.transform = "rotateX(0deg)";
+    listaCartoes.style.height = `${(index + 1) * 540 - index * 60}px`;
+    setTimeout(() => {
+      listaCartoes.classList.add("jogando");
+    }, 1000);
+
+    menu.style.display = "none";
+  });
 });
 
 function viraramTodos() {
